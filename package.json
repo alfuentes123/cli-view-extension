@@ -17,7 +17,29 @@
         "command": "cli-view-extension.launchTerminal",
         "title": "CLI View: Launch Terminal"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "CLI View Settings",
+      "properties": {
+        "cli-view-extension.savedCli": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "command": {
+                "type": "string"
+              }
+            },
+            "required": ["name", "command"]
+          },
+          "default": [{ "name": "Empty Terminal", "command": ""}],
+          "description": "Add your saved CLI commands here. Format: { name: string; command: string }"
+        }
+      } 
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
