@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 
 function showAlert() {
 	let saved: { name: string; command: string }[] | undefined = vscode.workspace.getConfiguration('cli-view-extension').get('savedCli');
-	const names = saved?.map((cli) => cli.name).slice(0, 1) ?? [];
-	const commands = saved?.map((cli) => cli.command).slice(0, 1) ?? [];
+	const names = saved?.map((cli) => cli.name) ?? [];
+	const commands = saved?.map((cli) => cli.command) ?? [];
 	const buttons = [...names, 'Manage CLIs'];
 	const selected = vscode.window.showInformationMessage("Select CLI", ...buttons ).then((value) => {
 		for (let i = 0; i < buttons.length; i++) {
@@ -12,6 +12,9 @@ function showAlert() {
 				}
 				else if (value === 'Manage CLIs') {
 					vscode.commands.executeCommand('workbench.action.openSettings', 'cli-view-extension.savedCli');
+				}
+				else if (value === undefined) {
+					return;
 				}
 		};
 	});
@@ -25,9 +28,11 @@ function launchTerminal(command: string) {
 				viewColumn: vscode.ViewColumn.Beside,
 				preserveFocus: true
 			},
-			shellArgs: command
 		});
 	terminal.show();
+	if (command) {
+		terminal.sendText(command);
+	}
 }
 
 function showButton() {
