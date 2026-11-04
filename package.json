@@ -1,7 +1,7 @@
 {
   "name": "cli-view-extension",
   "displayName": "CLI View",
-  "description": "Open a new terminal in the side view of the editor window. Add launch commands for new terminals.",
+  "description": "A simple VS Code extension that opens CLI tools in a split editor terminal with custom commands.",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.144.0"
