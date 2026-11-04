@@ -2,7 +2,7 @@
   "name": "cli-view-extension",
   "displayName": "CLI View",
   "description": "Open a new terminal in the side view of the editor window. Add launch commands for new terminals.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.144.0"
   },
