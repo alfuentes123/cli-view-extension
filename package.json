@@ -9,13 +9,13 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onStartupFinished"],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "cli-view-extension.helloWorld",
-        "title": "Hello World"
+        "command": "cli-view-extension.launchTerminal",
+        "title": "CLI View: Launch Terminal"
       }
     ]
   },

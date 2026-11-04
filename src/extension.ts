@@ -1,26 +1,46 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+
+function showAlert() {
+	
+	const saved: { options: string[] } | undefined = vscode.workspace.getConfiguration('cli-view-extension').get('savedCli');
+		const buttons = [...(saved?.options?.slice(0, 1) ?? []), 'Add a CLI'];
+
+
+	const selected = vscode.window.showInformationMessage("Select CLI", ...buttons )
+
+}
+
+
+ function launchTerminal() {
+	const terminal = vscode.window.createTerminal(
+		{
+			location: {
+				viewColumn: vscode.ViewColumn.Beside,
+				preserveFocus: true
+			},
+		});
+	terminal.show();
+}
+
+function showButton() {
+	const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+	button.text = '$(terminal) Launch CLI';
+	button.command = 'cli-view-extension.launchTerminal';
+	button.show();
+	return button;
+}
+
+
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "cli-view-extension" is now active!');
-
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('cli-view-extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from CLI View!');
-	});
+	const disposable = vscode.commands.registerCommand('cli-view-extension.launchTerminal', showAlert);
 
 	context.subscriptions.push(disposable);
+	showButton();
 }
 
-// This method is called when your extension is deactivated
+
 export function deactivate() {}
