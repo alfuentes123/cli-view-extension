@@ -2,6 +2,12 @@
 
 A simple VS Code extension that opens CLI tools in a split editor terminal.
 
+![CLI View Popup](assets/img1.png)
+
+![CLI View Split View Terminal](assets/img2.png)
+
+
+
 ### Features
 - Open CLI tools in a terminal beside your editor.
 - Add your own CLI tools through VS Code settings.
