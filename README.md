@@ -27,3 +27,7 @@ Each CLI requires a `name` and a `command`.
 ### Usage
 
 Click **Launch CLI** in the status bar and select a configured CLI, **Empty Terminal**, or **Manage CLIs** to customize your options.
+
+### License
+
+This extension is released under the [MIT License](LICENSE).
